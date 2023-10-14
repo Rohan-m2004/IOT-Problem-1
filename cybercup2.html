@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital In-Patient Care</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .critical-level {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .level-1 {
+            background-color: #FF0000; /* Red */
+            color: #fff;
+        }
+
+        .level-2 {
+            background-color: #FFFF00; /* Yellow */
+        }
+
+        .level-3 {
+            background-color: #008000; /* Green */
+            color: #fff;
+        }
+
+        .button-blink {
+            animation: blink 0.5s;
+        }
+
+        .box {
+            background-color: #3498db;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .proceed-button {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .new-user-registration {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .user-selection {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .user-registration {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .box {
+            background-color: #3498db;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .proceed-button {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .home-options {
+            display: none;
+        }
+
+        /* Additional styles for the form */
+        .new-user-registration h2,
+        .user-registration h2 {
+            font-size: 24px;
+        }
+
+        .new-user-registration form,
+        .user-registration form {
+            text-align: center;
+        }
+
+        .new-user-registration input,
+        .user-registration input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hospital In-Patient Care</h1>
+    </header>
+
+    <div class="container">
+        <div class="critical-level">
+            <p>Select the critical level of the patient:</p>
+            <button class="button level-1" id="criticalLevel1">Highly Critical (1)</button>
+            <button class="button level-2" id="criticalLevel2">Not So Critical (2)</button>
+            <button class="button level-3" id="criticalLevel3">Just for Viewing (3)</button>
+        </div>
+
+        <div class="user-selection" id="userSelection">
+            <button class="button" id="newUserButton">New User</button>
+            <button class="button" id="existingUserButton">Existing User</button>
+        </div>
+
+        <div class="new-user-registration" id="newUserRegistration">
+            <h2>New User Registration</h2>
+            <form id="registrationForm">
+                <h3>Personal Information:</h3>
+                <input type="text" placeholder="Full Name" id="name" required>
+                <input type="date" placeholder="Date of Birth" id "dob" required>
+                <input type="text" placeholder="Gender" id="gender" required>
+                <input type="text" placeholder="Social Security Number or National Identification Number" id="ssn" required>
+
+                <h3>Contact Information:</h3>
+                <input type="text" placeholder="Address" id="address" required>
+                <input type="tel" placeholder="Phone Number" id="phoneNumber" required>
+                <input type="email" placeholder="Email Address" id="email" required>
+
+                <h3>Health Information:</h3>
+                <textarea placeholder="Any Existing Medical Conditions" id="medicalConditions"></textarea>
+                <textarea placeholder="Allergies (if any)" id="allergies"></textarea>
+                <textarea placeholder="Current Medications" id="medications"></textarea>
+                <input type="text" placeholder="Blood Type (if available)" id="bloodType">
+                <textarea placeholder="Any Relevant Medical History" id="medicalHistory"></textarea>
+
+                <h3>Insurance Details:</h3>
+                <input type="text" placeholder="Insurance Provider's Name" id="insuranceProvider" required>
+                <input type="text" placeholder="Insurance Policy Number" id="insurancePolicy" required>
+                <input type="text" placeholder="Group Number" id="groupNumber" required>
+                <textarea placeholder="Any Other Relevant Insurance Information" id="otherInsuranceInfo"></textarea>
+
+                <h3>Emergency Contact Information:</h3>
+                <input type="text" placeholder="Name of the Emergency Contact Person" id="emergencyContactName">
+                <input type="text" placeholder="Relationship to the Patient" id="relationshipToPatient">
+                <input type="tel" placeholder="Emergency Contact's Phone Number" id="emergencyContactPhone">
+                <input type="email" placeholder="Emergency Contact's Email Address" id="emergencyContactEmail">
+
+                <h3>Authentication Details:</h3>
+                <input type="text" placeholder="Username" id="username" required>
+                <input type="password" placeholder="Secure Password" id="password" required>
+
+                <button class="button" id="registerButton">Register</button>
+            </form>
+        </div>
+
+        <div class="user-registration" id="userRegistration">
+            <h2>User Registration</h2>
+            <form id="userRegistrationForm">
+                <input type="text" placeholder="Username" id="username" required>
+                <input type="password" placeholder="Secure Password" id="password" required>
+                <button class="button" id="userRegisterButton">Register</button>
+            </form>
+        </div>
+
+        <div class="home-options" id="homeOptions">
+            <div class="box">
+                <a href="book-appointment.html">
+                    <button class="proceed-button">Book Appointment</button>
+                </a>
+                <a href="appointment-details.html">
+                    <button class="proceed-button">Appointment Details</button>
+                </a>
+                <a href="vital-monitoring.html">
+                    <button class="proceed-button">Vital Monitoring</button>
+                </a>
+                <a href="medicine-prescriptions.html">
+                    <button class="proceed-button">Medicine Prescriptions</button>
+                </a>
+                <a href="call-ambulance.html">
+                    <button class="proceed-button">Call an Ambulance</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var newUserRegistration = document.getElementById('newUserRegistration');
+        var userSelection = document.getElementById('userSelection');
+        var userRegistration = document.getElementById('userRegistration');
+        var homeOptions = document.getElementById('homeOptions');
+
+        document.getElementById('registerButton').addEventListener('click', function() {
+            // Handle form validation and submission here
+
+            // For demonstration purposes, we're redirecting to a success page
+            // You can replace 'success.html' with your actual success page
+            window.location.href = 'success.html';
+        });
+
+        document.getElementById('userRegisterButton').addEventListener('click', function() {
+            // Handle existing user registration form submission here
+
+            // For demonstration purposes, we're redirecting to a user dashboard
+            // You can replace 'user-dashboard.html' with your actual user dashboard page
+            window.location.href = 'user-dashboard.html';
+        });
+
+        // Handle other actions, e.g., vital monitoring, appointment booking, etc.
+        // Add event listeners for these actions and define their behavior.
+
+        document.getElementById('criticalLevel1').addEventListener('click', function() {
+            // Handle "Highly Critical" level as needed
+            // ...
+        });
+
+        document.getElementById('criticalLevel2').addEventListener('click', function() {
+            // Handle "Not So Critical" level as needed
+            // ...
+        });
+
+        document.getElementById('criticalLevel3').addEventListener('click', function() {
+            // Handle "Just for Viewing" level as needed
+            // ...
+        });
+
+        // Add event listeners and actions for the home page options
+    </script>
+</body>
+</html>
